@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nana Nyarko-Appiah</title>
-<meta name="description" content="Nana Y. Nyarko-Appiah, Senior Cloud Platform and Infrastructure Engineer in Houston, TX.">
+<title>Nana Appiah</title>
+<meta name="description" content="Nana Y. Nyarko-Appiah, Senior Platform & Cloud Infrastructure Engineer in Houston, TX. AWS, Terraform, Python automation, networking, identity and developer tooling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one left-aligned column, a terraform-plan hero, dated experience log, then projects, skills and contact. */
+/* Layout: one left-aligned column. Terraform-plan hero, metrics strip, about, dated experience log, projects, skills, testimonials, writing, contact. */
 :root {
   --bg: #f4f6f9;
   --surface: #ffffff;
@@ -27,19 +27,20 @@
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0d131c; --surface: #151d29; --ink: #e6ebf2; --muted: #9aa7b9; --rule: #273244;
     --accent: #7f9dff; --add: #6fd39b; --change: #f0b45b;
-    --term-bg: #080c13; --term-fg: #d5deea; --term-dim: #7c8aa0; --term-add: #6fd39b; --term-change: #f0b45b;
+    --term-bg: #080c13;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0d131c; --surface: #151d29; --ink: #e6ebf2; --muted: #9aa7b9; --rule: #273244;
   --accent: #7f9dff; --add: #6fd39b; --change: #f0b45b;
-  --term-bg: #080c13; --term-fg: #d5deea; --term-dim: #7c8aa0; --term-add: #6fd39b; --term-change: #f0b45b;
+  --term-bg: #080c13;
   color-scheme: dark;
 }
 
@@ -72,7 +73,6 @@ nav a:hover { color: var(--accent); }
 .hero .role { font-family: var(--display); font-weight: 500; font-size: clamp(1.15rem, 2.2vw, 1.45rem); color: var(--accent); margin-top: .9rem; }
 .hero .lede { margin-top: 1.25rem; max-width: 34rem; color: var(--muted); font-size: 1.075rem; }
 .hero .meta { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .925rem; }
-.hero .meta span { color: var(--muted); }
 
 .term { background: var(--term-bg); color: var(--term-fg); border-radius: 10px; font-family: var(--mono); font-size: .8rem; line-height: 1.7; overflow-x: auto; min-width: 0; box-shadow: 0 18px 40px -24px rgba(10, 20, 40, .55); }
 .term .bar { display: flex; gap: 6px; padding: .7rem .9rem; border-bottom: 1px solid rgba(255,255,255,.07); }
@@ -84,16 +84,29 @@ nav a:hover { color: var(--accent); }
 .term .b { font-weight: 500; color: #fff; }
 
 /* metrics */
-.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.metric { padding: 1.4rem 1.25rem 1.4rem 0; display: grid; gap: .3rem; align-content: start; }
-.metric + .metric { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
-.metric b { font-family: var(--display); font-weight: 700; font-size: clamp(1.75rem, 3.4vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
-.metric span { font-size: .875rem; color: var(--muted); }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.metric { padding: 1.3rem 1.25rem; display: grid; gap: .3rem; align-content: start; border-bottom: 1px solid var(--rule); }
+.metric:not(:nth-child(4n+1)) { border-left: 1px solid var(--rule); }
+.metric:nth-child(4n+1) { padding-left: 0; }
+.metric b { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.25rem); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.metric span { font-size: .85rem; color: var(--muted); }
+.metric em { font-style: normal; font-family: var(--mono); font-size: .7rem; letter-spacing: .04em; color: var(--muted); opacity: .85; }
 
 /* sections */
 section { display: grid; gap: 1.75rem; scroll-margin-top: 1.5rem; }
 .sec-head { display: grid; gap: .4rem; }
 .sec-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -.01em; }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+.about .prose { display: grid; gap: 1rem; max-width: 40rem; font-size: 1.05rem; }
+.arc { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 2px solid var(--rule); }
+.arc li { position: relative; padding: 0 0 1.1rem 1.25rem; display: grid; gap: .1rem; }
+.arc li:last-child { padding-bottom: 0; }
+.arc li::before { content: ""; position: absolute; left: -6px; top: .45rem; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); }
+.arc li:last-child::before { border-color: var(--add); background: var(--add); }
+.arc b { font-weight: 600; }
+.arc span { font-size: .9rem; color: var(--muted); }
 
 /* experience */
 .log { display: grid; }
@@ -103,52 +116,73 @@ section { display: grid; gap: 1.75rem; scroll-margin-top: 1.5rem; }
 .job .when .now { color: var(--add); }
 .job h3 { font-size: 1.3rem; font-weight: 700; }
 .job .title { font-weight: 500; margin-top: .15rem; }
-.job .ctx { color: var(--muted); font-size: .925rem; margin-top: .35rem; max-width: 42rem; }
-.job ul { margin: 1rem 0 0; padding: 0; list-style: none; display: grid; gap: .65rem; max-width: 46rem; }
+.job .ctx { color: var(--muted); font-size: .925rem; margin-top: .35rem; max-width: 44rem; }
+.job h4 { margin: 1.25rem 0 0; font-family: var(--mono); font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.job ul { margin: .75rem 0 0; padding: 0; list-style: none; display: grid; gap: .65rem; max-width: 46rem; }
+.job h4 + ul { margin-top: .5rem; }
 .job li { position: relative; padding-left: 1.4rem; }
 .job li::before { content: "+"; position: absolute; left: 0; top: 0; font-family: var(--mono); color: var(--add); font-weight: 500; }
+.job li strong { font-weight: 600; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
 .tag { font-family: var(--mono); font-size: .72rem; padding: .2rem .5rem; border: 1px solid var(--rule); border-radius: 4px; color: var(--muted); }
 
 /* projects */
-.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.proj { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.35rem; display: grid; gap: .6rem; align-content: start; }
-.proj .path { font-family: var(--mono); font-size: .78rem; color: var(--muted); overflow-wrap: anywhere; }
-.proj h3 { font-size: 1.15rem; font-weight: 700; }
-.proj p { color: var(--muted); font-size: .935rem; }
-.proj .tags { margin-top: .2rem; }
-.proj a { font-size: .9rem; font-weight: 500; }
+.projects { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+.proj { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.5rem; display: grid; gap: .75rem; align-content: start; }
+.proj .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; align-items: baseline; }
+.proj .badge { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--add); }
+.proj .badge.alt { color: var(--change); }
+.proj h3 { font-size: 1.35rem; font-weight: 700; }
+.proj p { color: var(--muted); font-size: .95rem; }
+.proj ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; font-size: .925rem; }
+.proj .links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .9rem; font-weight: 500; }
+.cmd { font-family: var(--mono); font-size: .85rem; background: var(--term-bg); color: var(--term-fg); border-radius: 6px; padding: .6rem .8rem; overflow-x: auto; white-space: pre; }
+.cmd .d { color: var(--term-dim); }
 
 /* skills */
-.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.5rem; }
 .skills h3 { font-family: var(--mono); font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.skills ul { list-style: none; margin: .8rem 0 0; padding: 0; display: grid; gap: .35rem; }
+.skills p { margin-top: .6rem; font-size: .95rem; }
+.skills .faint { color: var(--muted); }
 
-/* education + contact */
+/* testimonials */
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+figure { margin: 0; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 8px; display: grid; gap: 1rem; align-content: space-between; }
+figure blockquote { margin: 0; font-size: .975rem; }
+figure.lead blockquote { font-family: var(--display); font-weight: 500; font-size: 1.3rem; line-height: 1.3; }
+figcaption { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+.note { font-size: .8rem; color: var(--muted); }
+
+/* writing + contact */
 .duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 3rem; align-items: start; }
-.contact { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.75rem; display: grid; gap: 1.1rem; }
+.duo section { gap: 1rem; }
+.contact { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.75rem; }
 .contact h2 { font-size: 1.6rem; font-weight: 700; }
-.contact p { color: var(--muted); max-width: 34rem; }
+.contact p, .duo .plain p { color: var(--muted); max-width: 34rem; }
 .email { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 .email code { font-family: var(--mono); font-size: 1rem; padding: .45rem .7rem; border: 1px solid var(--rule); border-radius: 6px; user-select: all; overflow-wrap: anywhere; }
 button { font: 500 .875rem var(--body); color: var(--bg); background: var(--ink); border: 0; border-radius: 6px; padding: .55rem .9rem; cursor: pointer; }
 button:hover { background: var(--accent); }
 .links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
-footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+footer a { color: var(--muted); }
 
 @media (max-width: 900px) {
-  .hero, .duo { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero, .about, .duo, .projects { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .quotes { grid-template-columns: minmax(0, 1fr); }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .metric:nth-child(3) { padding-left: 0; border-left: 0; }
-  .metric:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .metric:not(:nth-child(4n+1)) { border-left: 0; }
+  .metric:nth-child(4n+1) { padding-left: 1.25rem; }
+  .metric:nth-child(odd) { padding-left: 0; }
+  .metric:nth-child(even) { border-left: 1px solid var(--rule); }
 }
 @media (max-width: 600px) {
   .wrap { padding-block: 2rem 3rem; gap: 3.5rem; }
   .job { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
   .job .when { grid-auto-flow: column; justify-content: start; gap: .75rem; padding-top: 0; }
-  .projects, .skills { grid-template-columns: minmax(0, 1fr); }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .metric { padding-inline: .9rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .term pre .ln { animation: rise .4s ease both; }
@@ -156,54 +190,83 @@ footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
   .term pre .ln:nth-child(4) { animation-delay: .15s } .term pre .ln:nth-child(5) { animation-delay: .2s }
   .term pre .ln:nth-child(6) { animation-delay: .25s } .term pre .ln:nth-child(7) { animation-delay: .3s }
   .term pre .ln:nth-child(8) { animation-delay: .35s } .term pre .ln:nth-child(9) { animation-delay: .4s }
+  .term pre .ln:nth-child(10) { animation-delay: .45s }
   @keyframes rise { from { opacity: .25; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <nav aria-label="Primary">
-    <span class="mark">nana.nyarko-appiah</span>
+    <span class="mark">nana.appiah</span>
     <ul>
+      <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="https://medium.com/@nkappiah92" target="_blank" rel="noopener">Writing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <header class="hero">
     <div>
-      <p class="label">Houston, TX · Open to remote</p>
-      <h1>Nana Y. Nyarko&#8209;Appiah</h1>
-      <p class="role">Senior Cloud Platform &amp; Infrastructure Engineer</p>
-      <p class="lede">Six-plus years building the AWS and Kubernetes platforms that product teams ship on. I turn manual access, networking and deployment work into infrastructure-as-code and automation, across fintech, cybersecurity and asset management.</p>
+      <p class="label">Houston, TX</p>
+      <h1>Nana Appiah</h1>
+      <p class="role">Senior Platform &amp; Cloud Infrastructure Engineer</p>
+      <p class="lede">About seven years building the foundations other engineers ship on: AWS networking, identity, Terraform modules, CI/CD and observability. Lately, the developer tooling that makes that platform easier to use.</p>
       <div class="meta">
-        <a href="https://www.linkedin.com/in/ny-nappiah/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/ny-nappiah" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/JRcodes" target="_blank" rel="noopener">GitHub</a>
-        <a href="#contact">Get in touch</a>
+        <a href="https://medium.com/@nkappiah92" target="_blank" rel="noopener">Medium</a>
+        <a href="#contact">Email</a>
       </div>
     </div>
-    <div class="term" role="img" aria-label="A terraform plan summarizing career highlights: 200+ app migrations, 100+ firewall rules, 50+ services containerized, 3 operations consolidated into 1.">
+    <div class="term" role="img" aria-label="A terraform plan summarizing recent platform work: 200+ application migrations, 50+ applications reconnected, 100+ firewall rules migrated, 3 Terraform operations consolidated into 1, 99.99% platform availability.">
       <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-<pre aria-hidden="true"><span class="ln"><span class="d">$</span> <span class="b">terraform plan -out=career.tfplan</span></span>
+<pre aria-hidden="true"><span class="ln"><span class="d">$</span> <span class="b">terraform plan -out=platform.tfplan</span></span>
 <span class="ln"><span class="d"># module.platform will be updated in-place</span></span>
-<span class="ln">  <span class="a">+</span> app_migrations         = <span class="a">"200+"</span></span>
+<span class="ln">  <span class="a">+</span> apps_migrated          = <span class="a">"200+"</span></span>
+<span class="ln">  <span class="a">+</span> apps_reconnected       = <span class="a">"50+"</span></span>
 <span class="ln">  <span class="a">+</span> firewall_rules_moved   = <span class="a">"100+"</span> <span class="d"># 4 accounts</span></span>
-<span class="ln">  <span class="a">+</span> services_containerized = <span class="a">"50+"</span></span>
 <span class="ln">  <span class="c">~</span> permission_set_ops     = <span class="c">3 -&gt; 1</span></span>
-<span class="ln">  <span class="c">~</span> mttr                   = <span class="c">"-50%"</span></span>
+<span class="ln">  <span class="c">~</span> platform_availability  = <span class="c">"99.99%"</span></span>
 <span class="ln"> </span>
-<span class="ln"><span class="b">Plan:</span> <span class="a">4 to add</span>, <span class="c">2 to change</span>, 0 to destroy.</span></pre>
+<span class="ln"><span class="b">Plan:</span> <span class="a">3 to add</span>, <span class="c">2 to change</span>, 0 to destroy.</span></pre>
     </div>
   </header>
 
-  <div class="metrics" aria-label="Highlights">
-    <div class="metric"><b>99.999%</b><span>uptime on ML inference APIs at Trellix</span></div>
-    <div class="metric"><b>10M+</b><span>daily inference requests served</span></div>
-    <div class="metric"><b>200+</b><span>application migrations supported</span></div>
-    <div class="metric"><b>50%</b><span>faster MTTR across 5 Kafka/ES clusters</span></div>
+  <div class="metrics" aria-label="Key metrics">
+    <div class="metric"><b>200+</b><span>applications migrated to a new platform</span><em>Fintech client</em></div>
+    <div class="metric"><b>50+</b><span>apps' network connectivity restored</span><em>Fintech client</em></div>
+    <div class="metric"><b>99.99%</b><span>platform availability</span><em>Fintech client</em></div>
+    <div class="metric"><b>67%</b><span>less configuration complexity in permission sets</span><em>Fintech client</em></div>
+    <div class="metric"><b>10M+</b><span>daily ML inference requests served</span><em>Trellix</em></div>
+    <div class="metric"><b>99.999%</b><span>uptime on ML model serving</span><em>Trellix</em></div>
+    <div class="metric"><b>50%</b><span>lower MTTR across Kafka and Elasticsearch clusters</span><em>Trellix</em></div>
+    <div class="metric"><b>50%</b><span>less developer time on on-call questions</span><em>AI Slack chatbot</em></div>
   </div>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="sec-head">
+      <p class="label">About</p>
+      <h2 id="about-h">Platform foundations, and the tools around them</h2>
+    </div>
+    <div class="about">
+      <div class="prose">
+        <p>I'm a platform and cloud infrastructure engineer with about seven years of experience across fintech, cybersecurity and investment management. I build the foundations other engineers ship on: AWS networking, identity, Terraform modules, CI/CD and observability. Lately I've been building the developer tooling that makes that platform easier to use, including reusable Terraform modules, an AI chatbot and an MCP server.</p>
+        <p>Much of my career has been in consulting, so I'm comfortable with client stakeholders and ambiguous requirements, and with turning business needs into infrastructure. I've carried formal on-call and led incident response.</p>
+        <p>Outside work I trade and study markets. I manage my own portfolio, trade stocks and options, and I'm teaching myself quantitative development. That's where my interest in trading technology comes from.</p>
+      </div>
+      <ol class="arc" aria-label="Career arc">
+        <li><b>ML platform infrastructure</b><span>Vanguard</span></li>
+        <li><b>Cloud consulting and data pipelines</b><span>Slalom</span></li>
+        <li><b>SRE / DevOps for Kafka, Elasticsearch and EKS</b><span>Trellix</span></li>
+        <li><b>Cloud re-platforming and developer tooling</b><span>Evolv Consulting, fintech client</span></li>
+      </ol>
+    </div>
+  </section>
 
   <section id="experience" aria-labelledby="exp-h">
     <div class="sec-head">
@@ -212,58 +275,82 @@ footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
     </div>
     <div class="log">
       <article class="job">
-        <div class="when"><span class="now">May 2024 – Present</span><span>Remote</span></div>
+        <div class="when"><span class="now">May 2024 – Present</span><span>Houston, TX · Remote</span></div>
         <div>
           <h3>Evolv Consulting</h3>
           <p class="title">Consultant, Senior Cloud Platform / Infrastructure Engineer</p>
-          <p class="ctx">Client: a fintech platform delivering banking, lending and investing services.</p>
+          <p class="ctx">Client: a fintech offering an all-in-one digital platform for banking, lending and investing.</p>
+          <h4>Platform and identity</h4>
           <ul>
-            <li>Designed an AWS Identity Center permission-set module that folds 3 separate Terraform operations into one atomic unit, cutting configuration complexity 67% and eliminating drift across 2 AWS organizations.</li>
-            <li>Built AWS Network Firewall from scratch, with Lambda + EventBridge automation for custom-port FQDN rules, then migrated 100+ legacy appliance rules across 4 accounts using STRICT_ORDER stateful evaluation.</li>
-            <li>Led cross-account IAM design between EKS workloads and AWS services, generating GitLab repos, IAM policies and Terraform with Python and Jinja to support 200+ application migrations.</li>
-            <li>Restored connectivity for 50+ applications after migration with VPC peering and PrivateLink delivered through GitLab CI, holding 99.99% platform availability.</li>
-            <li>Removed GitHub API rate-limit failures from CI with caching and fallbacks, and paid down 2.5 years of tooling debt (tflint v0.23 → v0.45).</li>
+            <li><strong>Unified AWS Identity Center permission-set module (Terraform).</strong> Consolidated 3 separate Terraform operations into 1 atomic unit, cutting configuration complexity 67% and eliminating drift risk across 2 AWS organizations. 703 lines of module code and about 2,500 lines of docs, merged with 5 team approvals in Jan 2026 after about 4 months of iterative prototyping, including <code>terraform state mv</code> migration of existing resources.</li>
+            <li><strong>Cross-account IAM migration automation (Python + Jinja).</strong> Generated GitLab repo directories, IAM policies and Terraform code, with OIDC trust policies that let new-platform EKS workloads assume legacy roles. Supported the migration of 200+ applications, including sensitive banking, debit card and risk workloads, using <code>ForAllValues:StringEquals</code> conditions for shared multi-app service roles.</li>
           </ul>
-          <div class="tags"><span class="tag">Terraform</span><span class="tag">AWS IAM Identity Center</span><span class="tag">Network Firewall</span><span class="tag">EKS</span><span class="tag">GitLab CI</span><span class="tag">Python</span></div>
+          <h4>Networking</h4>
+          <ul>
+            <li><strong>Post-migration connectivity.</strong> Restored connectivity for 50+ applications with VPC peering and PrivateLink delivered through Terraform and GitLab CI, holding 99.99% platform availability. Included cross-team peering to the data platform and PrivateLink to a third-party credit API.</li>
+            <li><strong>AWS Network Firewall, built from zero.</strong> Stood up the firewall-rules repo end to end: ADR, CI/CD, state and policies. Built a Python Lambda + EventBridge automation that resolves custom-port FQDNs to IPs, since Network Firewall only supports FQDN rules on ports 80 and 443. Migrated 100+ legacy appliance rules across 4 AWS accounts with STRICT_ORDER stateful evaluation and a default-deny posture for banking environments, pruning rules with the Security team.</li>
+          </ul>
+          <h4>Developer tooling</h4>
+          <ul>
+            <li><strong>AI-powered Slack chatbot.</strong> Lambda, Amazon Lex and an LLM (Bedrock/OpenAI) for generative answers, with Slack signature verification, sync and async invocation paths, and CI packaging. Adopted across the 5-team Cloud Infrastructure Platform org, cutting developer time spent answering on-call questions by 50%.</li>
+            <li><strong>Custom MCP server</strong> that exposes GitLab docs and infrastructure/IaC processes to AI assistants.</li>
+            <li><strong>CI/CD resilience.</strong> Caching and fallbacks eliminated GitHub API rate-limit failures; upgraded tflint from v0.23.0 to v0.45.0, 2.5 years of improvements.</li>
+            <li><strong>Platform tooling support.</strong> Networking and service discovery (security groups, NLB node ports, a test app validating connectivity) and CI/CD runner IAM supporting the artifact repository and runner infrastructure for 5 teams.</li>
+          </ul>
+          <h4>Also</h4>
+          <ul>
+            <li>Supported AWS SCPs while provisioning OUs and accounts; built break-glass permission sets for on-call; Kubernetes RBAC; SOC2 evidence gathering for access controls; formal on-call with incident response leadership.</li>
+          </ul>
+          <div class="tags"><span class="tag">Terraform</span><span class="tag">AWS Identity Center</span><span class="tag">IAM / OIDC</span><span class="tag">Network Firewall</span><span class="tag">PrivateLink</span><span class="tag">EKS</span><span class="tag">GitLab CI</span><span class="tag">Python</span><span class="tag">Lex / Bedrock</span></div>
         </div>
       </article>
+
       <article class="job">
-        <div class="when"><span>Nov 2022 – Apr 2025</span><span>Remote</span></div>
+        <div class="when"><span>Nov 2022 – Apr 2025</span><span>Houston, TX · Remote</span></div>
         <div>
-          <h3>Trellix (FireEye &amp; McAfee)</h3>
-          <p class="title">Senior Software Engineer, DevOps / SRE</p>
-          <p class="ctx">Cybersecurity company formed from the merger of FireEye and McAfee Enterprise.</p>
+          <h3>Trellix</h3>
+          <p class="title">Staff Software/DevOps Engineer</p>
+          <p class="ctx">Formerly FireEye &amp; McAfee Enterprise. Cybersecurity company delivering threat intelligence and detection.</p>
           <ul>
-            <li>Built and ran FastAPI microservices serving ML models to the data science team: 10M+ inference requests a day at 99.999% uptime.</li>
-            <li>Automated observability and remediation for 5 multi-region Kafka and Elasticsearch clusters on EKS with Prometheus and Grafana, cutting MTTR 50%.</li>
-            <li>Containerized and migrated 50+ legacy Node.js services into secure, cloud-native environments.</li>
+            <li><strong>ML model serving platform (FastAPI + asyncio).</strong> 10M+ daily inference requests at 99.999% uptime for the data science team, with async, non-blocking I/O to the model backend.</li>
+            <li><strong>Observability and auto-remediation</strong> for 5 multi-regional Kafka and Elasticsearch clusters on AWS EKS using Prometheus, Grafana and Bash, cutting MTTR by 50%.</li>
+            <li><strong>Consul service mesh.</strong> Designed and implemented service discovery, mTLS and traffic management across 5 multi-regional EKS clusters.</li>
+            <li><strong>Kafka:</strong> broker configuration, producers and consumers, with Cassandra as the primary sink.</li>
+            <li><strong>AWS CDK Python library</strong> standardizing EC2 and Lambda creation, adopted by 2 teams.</li>
+            <li>Containerized and migrated 50+ legacy Node.js services to cloud-native environments.</li>
+            <li>ArgoCD deployments across EKS, formal on-call, and informal mentorship through code reviews.</li>
           </ul>
-          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Kafka</span><span class="tag">Elasticsearch</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">EKS</span></div>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">asyncio</span><span class="tag">Kafka</span><span class="tag">Elasticsearch</span><span class="tag">Consul</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">ArgoCD</span><span class="tag">AWS CDK</span></div>
         </div>
       </article>
+
       <article class="job">
         <div class="when"><span>Jun 2021 – Nov 2022</span><span>Philadelphia, PA</span></div>
         <div>
           <h3>Slalom</h3>
           <p class="title">Consultant, Cloud Infrastructure Engineer</p>
+          <p class="ctx">Global business and technology consulting firm.</p>
           <ul>
-            <li>Led a 5-engineer team that built a data pipeline from zero in 4 months on Lambda, S3, Athena and Glue, doubling ingestion and processing throughput.</li>
-            <li>Built Python microservices orchestrated by Step Functions that process 500+ financial documents a day through OCR at 99.99% uptime.</li>
+            <li><strong>Mortgage lending client.</strong> Python microservices orchestrated by AWS Step Functions that process 500+ financial documents a day through OCR, with S3 ingestion and DynamoDB status tracking using retry/catch for idempotent processing, at 99.99% uptime.</li>
+            <li><strong>Energy client.</strong> Led a 5-engineer team that built a zero-to-cloud data pipeline (Lambda/Python, S3, Athena, Glue) in 4 months, doubling ingestion and processing throughput. Integrated 4–5 external data vendor APIs, handled complex SQL parsing, and managed client and vendor stakeholders. The team earned an 8-week engagement extension.</li>
           </ul>
-          <div class="tags"><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Athena</span><span class="tag">Step Functions</span></div>
+          <div class="tags"><span class="tag">Step Functions</span><span class="tag">DynamoDB</span><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Athena</span><span class="tag">SQL</span></div>
         </div>
       </article>
+
       <article class="job">
         <div class="when"><span>Oct 2019 – Jun 2021</span><span>Malvern, PA</span></div>
         <div>
           <h3>Vanguard</h3>
-          <p class="title">Software Engineer, AI/ML Platforms &amp; Infrastructure</p>
+          <p class="title">Software Engineer, AI/ML Platforms / Infrastructure</p>
+          <p class="ctx">One of the world's largest investment management firms.</p>
           <ul>
-            <li>Deployed an AWS Kendra search index with Python IaC (Troposphere), cutting client inquiry resolution time 10%.</li>
-            <li>Built self-service CloudFormation template generation that cut infrastructure development time 20% across 10+ teams.</li>
-            <li>Provisioned infrastructure across 5 AWS environments with security and compliance safeguards built in.</li>
+            <li><strong>AWS Kendra search index</strong> built with Python IaC (Troposphere) and integrated with frontend search, reducing client inquiry resolution time 10% while maintaining compliance.</li>
+            <li><strong>Real-time SageMaker inference pipeline template</strong> with multi-container pre- and post-processing, built with a cross-functional team and adopted by 4 teams.</li>
+            <li><strong>Self-service CloudFormation generation</strong> that cut infrastructure development time 20% across 10+ teams.</li>
+            <li>Provisioned infrastructure across 5 AWS environments with embedded security and compliance safeguards.</li>
           </ul>
-          <div class="tags"><span class="tag">CloudFormation</span><span class="tag">Troposphere</span><span class="tag">Kendra</span></div>
+          <div class="tags"><span class="tag">Troposphere</span><span class="tag">Kendra</span><span class="tag">SageMaker</span><span class="tag">CloudFormation</span></div>
         </div>
       </article>
     </div>
@@ -272,45 +359,31 @@ footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
   <section id="projects" aria-labelledby="proj-h">
     <div class="sec-head">
       <p class="label">Projects</p>
-      <h2 id="proj-h">Things I build on my own time</h2>
+      <h2 id="proj-h">Things I've built outside client work</h2>
     </div>
     <div class="projects">
       <article class="proj">
-        <span class="path">JRcodes/systematic-trading-pipeline</span>
-        <h3>Systematic Trading Pipeline</h3>
-        <p>An end-to-end trading pipeline that runs from signal generation through backtesting to live trading.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Backtesting</span></div>
+        <div class="top"><span class="badge">Featured · Published on PyPI</span></div>
+        <h3>iacgen: IaC Blueprint Generator</h3>
+        <p>A Python CLI that generates opinionated Terraform blueprints for AWS (VPC, EKS, ALB, Kubernetes Service) from one command or YAML presets. Solo project.</p>
+        <div class="cmd"><span class="d">$</span> pip install iacgen</div>
+        <ul>
+          <li>Python 3.10+ CLI built with Typer and Rich</li>
+          <li>Pydantic config models and a Jinja2 rendering engine with custom Terraform filters</li>
+          <li>Dependency-validation engine that enforces wiring rules, for example EKS requires a VPC</li>
+          <li>pytest suite with 29+ validator tests; CI/CD on GitHub Actions; built with help from AI coding assistants</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Terraform</span><span class="tag">Typer</span><span class="tag">Pydantic</span><span class="tag">Jinja2</span><span class="tag">pytest</span></div>
+        <div class="links">
+          <a href="https://github.com/saucey-code/iac-generator" target="_blank" rel="noopener">Source on GitHub</a>
+          <a href="https://pypi.org/project/iacgen/" target="_blank" rel="noopener">iacgen on PyPI</a>
+        </div>
       </article>
       <article class="proj">
-        <span class="path">saucey-code/aws-org-management</span>
-        <h3>AWS Org Management</h3>
-        <p>Infrastructure-as-code for managing a multi-account AWS Organization: accounts, guardrails and access.</p>
-        <div class="tags"><span class="tag">AWS Organizations</span><span class="tag">IaC</span></div>
-      </article>
-      <article class="proj">
-        <span class="path">JRcodes/nifty-scripts</span>
-        <h3>Nifty Scripts</h3>
-        <p>A working toolbox of Python automation scripts for everyday cloud and developer chores.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span></div>
-      </article>
-      <article class="proj">
-        <span class="path">JRcodes/SENTIMENT-ANALYSIS-FOR-PITCHORK</span>
-        <h3>Pitchfork Sentiment Analysis</h3>
-        <p>A data science project scoring the sentiment of Pitchfork music reviews.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span></div>
-      </article>
-      <article class="proj">
-        <span class="path">JRcodes/COLOR-GAME</span>
-        <h3>Color Game</h3>
-        <p>A browser game: read an RGB value and pick the matching swatch.</p>
-        <div class="tags"><span class="tag">JavaScript</span></div>
-        <a href="https://github.com/JRcodes/COLOR-GAME" target="_blank" rel="noopener">View on GitHub</a>
-      </article>
-      <article class="proj">
-        <span class="path">JRcodes/SCORE-KEEPER</span>
-        <h3>Score Keeper</h3>
-        <p>A small web app for keeping score in head-to-head games.</p>
-        <div class="tags"><span class="tag">JavaScript</span></div>
+        <div class="top"><span class="badge alt">Hackathon · 2025</span></div>
+        <h3>AML Detection Engine</h3>
+        <p>Built at an Evolv Consulting internal hackathon with a team of 2–4. I split my work between the Snowflake data layer (schema and detection queries) and the Streamlit dashboard.</p>
+        <div class="tags"><span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Streamlit</span></div>
       </article>
     </div>
   </section>
@@ -318,49 +391,88 @@ footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
   <section id="skills" aria-labelledby="skills-h">
     <div class="sec-head">
       <p class="label">Skills</p>
-      <h2 id="skills-h">Tools I reach for</h2>
+      <h2 id="skills-h">Tools I work with</h2>
     </div>
     <div class="skills">
-      <div><h3>Cloud &amp; IaC</h3><ul><li>AWS: EKS, IAM, VPC, PrivateLink</li><li>Lambda, EventBridge, Network Firewall</li><li>Terraform</li><li>CloudFormation · AWS CDK</li></ul></div>
-      <div><h3>Platform</h3><ul><li>Kubernetes</li><li>Docker</li><li>GitLab CI · GitHub Actions</li><li>Internal developer tooling</li></ul></div>
-      <div><h3>Backend &amp; data</h3><ul><li>Python · AsyncIO</li><li>FastAPI · REST APIs</li><li>Kafka · event-driven design</li><li>Glue · Athena · Step Functions</li></ul></div>
-      <div><h3>Reliability</h3><ul><li>Prometheus · Grafana</li><li>Elasticsearch</li><li>Incident response</li><li>IAM governance &amp; network security</li></ul></div>
+      <div><h3>Cloud (AWS)</h3><p>EKS, Lambda, EventBridge, Step Functions, S3, DynamoDB, Athena, Glue, IAM, Identity Center, Organizations/SCPs, VPC peering, PrivateLink, Network Firewall, CloudWatch, SageMaker, Kendra, Lex, Bedrock, Auto Scaling</p></div>
+      <div><h3>Infrastructure as code</h3><p>Terraform, CloudFormation, AWS CDK, Troposphere</p></div>
+      <div><h3>Languages</h3><p>Python (FastAPI, asyncio, Pydantic, Jinja2, Typer), Bash, SQL</p></div>
+      <div><h3>Containers &amp; orchestration</h3><p>Kubernetes, Docker, ArgoCD, Consul service mesh</p></div>
+      <div><h3>Streaming &amp; data</h3><p>Kafka, Elasticsearch, Cassandra, Snowflake, Streamlit</p></div>
+      <div><h3>CI/CD</h3><p>GitLab CI, GitHub Actions (personal projects)</p></div>
+      <div><h3>Observability</h3><p>Prometheus, Grafana, CloudWatch</p></div>
+      <div><h3>Identity &amp; security</h3><p>IAM, OIDC, Okta SSO, Kubernetes RBAC, SOC2 evidence support</p></div>
+      <div><h3>AI tooling</h3><p>LLM-powered chatbot, custom MCP server, Claude Code and Cursor daily</p></div>
+      <div><h3>Working familiarity</h3><p class="faint">Ansible, HashiCorp Vault, Datadog</p></div>
     </div>
   </section>
 
+  <section id="testimonials" aria-labelledby="test-h">
+    <div class="sec-head">
+      <p class="label">Testimonials</p>
+      <h2 id="test-h">What clients and colleagues said</h2>
+    </div>
+    <div class="quotes">
+      <figure class="lead">
+        <blockquote><p>“I don't care what we need to do to keep this team on board but let's make that happen.”</p></blockquote>
+        <figcaption>CTO, energy client · Slalom engagement</figcaption>
+      </figure>
+      <figure>
+        <blockquote><p>Nana handled client stakeholder conversations with grace, navigated risk well, and stepped outside his comfort zone into AWS infrastructure, complex SQL and vendor API integrations, on a project far more complex than its initial dashboard scope. The team's work earned an 8-week extension.</p></blockquote>
+        <figcaption>Colleague, Slalom · energy client engagement</figcaption>
+      </figure>
+      <figure>
+        <blockquote><p>Nana engaged disparate client team members to refine unclear requirements with little oversight, made solid backend contributions, and kept a positive, learner's attitude and poise under pressure.</p></blockquote>
+        <figcaption>Colleague, Slalom · mortgage lending engagement</figcaption>
+      </figure>
+    </div>
+    <p class="note">Colleague feedback is paraphrased from written reviews.</p>
+  </section>
+
   <div class="duo">
-    <section aria-labelledby="edu-h">
+    <section class="plain" aria-labelledby="write-h">
       <div class="sec-head">
-        <p class="label">Education</p>
-        <h2 id="edu-h">University of Delaware</h2>
+        <p class="label">Writing</p>
+        <h2 id="write-h">On Medium</h2>
       </div>
-      <p>Bachelor's degree in Civil Engineering, with Computer Science electives. Newark, DE.</p>
+      <p>My articles and notes are on Medium.</p>
+      <a href="https://medium.com/@nkappiah92" target="_blank" rel="noopener">Read on Medium</a>
+      <div class="sec-head" style="margin-top:1.5rem">
+        <p class="label">Education</p>
+        <h2>University of Delaware</h2>
+      </div>
+      <p>B.S. Civil Engineering, with Computer Science electives. Newark, DE.</p>
     </section>
 
     <section id="contact" class="contact" aria-labelledby="contact-h">
       <p class="label">Contact</p>
-      <h2 id="contact-h">Let's talk platform work</h2>
-      <p>I'm interested in senior platform, infrastructure and SRE roles, remote or in Houston. Email is the fastest way to reach me.</p>
+      <h2 id="contact-h">Get in touch</h2>
+      <p>Email is the best way to reach me.</p>
       <div class="email">
         <code id="email-addr">ny.nappiah@gmail.com</code>
         <button type="button" id="copy-email">Copy email</button>
       </div>
       <div class="links">
-        <a href="https://www.linkedin.com/in/ny-nappiah/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:ny.nappiah@gmail.com">Send an email</a>
+        <a href="https://www.linkedin.com/in/ny-nappiah" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/JRcodes" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://medium.com/@nkappiah92" target="_blank" rel="noopener">Medium</a>
       </div>
     </section>
   </div>
 
-  <footer>© 2026 Nana Y. Nyarko-Appiah · Houston, TX</footer>
+  <footer>
+    <span>© 2026 Nana Y. Nyarko-Appiah · Houston, TX</span>
+    <span><a href="https://www.linkedin.com/in/ny-nappiah" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/JRcodes" target="_blank" rel="noopener">GitHub</a> · <a href="https://medium.com/@nkappiah92" target="_blank" rel="noopener">Medium</a></span>
+  </footer>
 </div>
 
 <script>
 document.getElementById('copy-email').addEventListener('click', function () {
-  var btn = this, text = document.getElementById('email-addr').textContent;
+  var btn = this, el = document.getElementById('email-addr'), text = el.textContent;
   function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); }
   function fallback() {
-    var r = document.createRange(); r.selectNodeContents(document.getElementById('email-addr'));
+    var r = document.createRange(); r.selectNodeContents(el);
     var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected, press Ctrl+C');
   }
   try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); } catch (e) { fallback(); }
