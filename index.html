@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nana Nyarko-Appiah</title>
+<meta name="description" content="Nana Y. Nyarko-Appiah, Senior Cloud Platform and Infrastructure Engineer in Houston, TX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one left-aligned column, a terraform-plan hero, dated experience log, then projects, skills and contact. */
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --ink: #142030;
+  --muted: #56657a;
+  --rule: #d8dee8;
+  --accent: #2b55d6;
+  --add: #1d7a4c;
+  --change: #a5650d;
+  --term-bg: #0f1724;
+  --term-fg: #d5deea;
+  --term-dim: #7c8aa0;
+  --term-add: #6fd39b;
+  --term-change: #f0b45b;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d131c; --surface: #151d29; --ink: #e6ebf2; --muted: #9aa7b9; --rule: #273244;
+    --accent: #7f9dff; --add: #6fd39b; --change: #f0b45b;
+    --term-bg: #080c13; --term-fg: #d5deea; --term-dim: #7c8aa0; --term-add: #6fd39b; --term-change: #f0b45b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d131c; --surface: #151d29; --ink: #e6ebf2; --muted: #9aa7b9; --rule: #273244;
+  --accent: #7f9dff; --add: #6fd39b; --change: #f0b45b;
+  --term-bg: #080c13; --term-fg: #d5deea; --term-dim: #7c8aa0; --term-add: #6fd39b; --term-change: #f0b45b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1rem; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 68rem; margin: 0 auto; padding-block: 3rem 4rem; display: grid; gap: 4.5rem; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* nav */
+nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem 1.5rem; }
+nav .mark { font-family: var(--mono); font-size: .875rem; color: var(--muted); }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+nav a { font-size: .9rem; color: var(--ink); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.02; font-weight: 700; letter-spacing: -.02em; }
+.hero .role { font-family: var(--display); font-weight: 500; font-size: clamp(1.15rem, 2.2vw, 1.45rem); color: var(--accent); margin-top: .9rem; }
+.hero .lede { margin-top: 1.25rem; max-width: 34rem; color: var(--muted); font-size: 1.075rem; }
+.hero .meta { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .925rem; }
+.hero .meta span { color: var(--muted); }
+
+.term { background: var(--term-bg); color: var(--term-fg); border-radius: 10px; font-family: var(--mono); font-size: .8rem; line-height: 1.7; overflow-x: auto; min-width: 0; box-shadow: 0 18px 40px -24px rgba(10, 20, 40, .55); }
+.term .bar { display: flex; gap: 6px; padding: .7rem .9rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2a3546; }
+.term pre { margin: 0; padding: 1rem 1.1rem 1.2rem; white-space: pre; }
+.term .d { color: var(--term-dim); }
+.term .a { color: var(--term-add); }
+.term .c { color: var(--term-change); }
+.term .b { font-weight: 500; color: #fff; }
+
+/* metrics */
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.metric { padding: 1.4rem 1.25rem 1.4rem 0; display: grid; gap: .3rem; align-content: start; }
+.metric + .metric { padding-left: 1.25rem; border-left: 1px solid var(--rule); }
+.metric b { font-family: var(--display); font-weight: 700; font-size: clamp(1.75rem, 3.4vw, 2.4rem); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.metric span { font-size: .875rem; color: var(--muted); }
+
+/* sections */
+section { display: grid; gap: 1.75rem; scroll-margin-top: 1.5rem; }
+.sec-head { display: grid; gap: .4rem; }
+.sec-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; letter-spacing: -.01em; }
+
+/* experience */
+.log { display: grid; }
+.job { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.75rem; border-top: 1px solid var(--rule); }
+.job:last-child { border-bottom: 1px solid var(--rule); }
+.job .when { font-family: var(--mono); font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: .3rem; display: grid; gap: .2rem; align-content: start; }
+.job .when .now { color: var(--add); }
+.job h3 { font-size: 1.3rem; font-weight: 700; }
+.job .title { font-weight: 500; margin-top: .15rem; }
+.job .ctx { color: var(--muted); font-size: .925rem; margin-top: .35rem; max-width: 42rem; }
+.job ul { margin: 1rem 0 0; padding: 0; list-style: none; display: grid; gap: .65rem; max-width: 46rem; }
+.job li { position: relative; padding-left: 1.4rem; }
+.job li::before { content: "+"; position: absolute; left: 0; top: 0; font-family: var(--mono); color: var(--add); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+.tag { font-family: var(--mono); font-size: .72rem; padding: .2rem .5rem; border: 1px solid var(--rule); border-radius: 4px; color: var(--muted); }
+
+/* projects */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.proj { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1.35rem; display: grid; gap: .6rem; align-content: start; }
+.proj .path { font-family: var(--mono); font-size: .78rem; color: var(--muted); overflow-wrap: anywhere; }
+.proj h3 { font-size: 1.15rem; font-weight: 700; }
+.proj p { color: var(--muted); font-size: .935rem; }
+.proj .tags { margin-top: .2rem; }
+.proj a { font-size: .9rem; font-weight: 500; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+.skills h3 { font-family: var(--mono); font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.skills ul { list-style: none; margin: .8rem 0 0; padding: 0; display: grid; gap: .35rem; }
+
+/* education + contact */
+.duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 3rem; align-items: start; }
+.contact { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.75rem; display: grid; gap: 1.1rem; }
+.contact h2 { font-size: 1.6rem; font-weight: 700; }
+.contact p { color: var(--muted); max-width: 34rem; }
+.email { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.email code { font-family: var(--mono); font-size: 1rem; padding: .45rem .7rem; border: 1px solid var(--rule); border-radius: 6px; user-select: all; overflow-wrap: anywhere; }
+button { font: 500 .875rem var(--body); color: var(--bg); background: var(--ink); border: 0; border-radius: 6px; padding: .55rem .9rem; cursor: pointer; }
+button:hover { background: var(--accent); }
+.links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+footer { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .hero, .duo { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric:nth-child(3) { padding-left: 0; border-left: 0; }
+  .metric:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 600px) {
+  .wrap { padding-block: 2rem 3rem; gap: 3.5rem; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .job .when { grid-auto-flow: column; justify-content: start; gap: .75rem; padding-top: 0; }
+  .projects, .skills { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .term pre .ln { animation: rise .4s ease both; }
+  .term pre .ln:nth-child(2) { animation-delay: .05s } .term pre .ln:nth-child(3) { animation-delay: .1s }
+  .term pre .ln:nth-child(4) { animation-delay: .15s } .term pre .ln:nth-child(5) { animation-delay: .2s }
+  .term pre .ln:nth-child(6) { animation-delay: .25s } .term pre .ln:nth-child(7) { animation-delay: .3s }
+  .term pre .ln:nth-child(8) { animation-delay: .35s } .term pre .ln:nth-child(9) { animation-delay: .4s }
+  @keyframes rise { from { opacity: .25; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Primary">
+    <span class="mark">nana.nyarko-appiah</span>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="label">Houston, TX · Open to remote</p>
+      <h1>Nana Y. Nyarko&#8209;Appiah</h1>
+      <p class="role">Senior Cloud Platform &amp; Infrastructure Engineer</p>
+      <p class="lede">Six-plus years building the AWS and Kubernetes platforms that product teams ship on. I turn manual access, networking and deployment work into infrastructure-as-code and automation, across fintech, cybersecurity and asset management.</p>
+      <div class="meta">
+        <a href="https://www.linkedin.com/in/ny-nappiah/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/JRcodes" target="_blank" rel="noopener">GitHub</a>
+        <a href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="term" role="img" aria-label="A terraform plan summarizing career highlights: 200+ app migrations, 100+ firewall rules, 50+ services containerized, 3 operations consolidated into 1.">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<pre aria-hidden="true"><span class="ln"><span class="d">$</span> <span class="b">terraform plan -out=career.tfplan</span></span>
+<span class="ln"><span class="d"># module.platform will be updated in-place</span></span>
+<span class="ln">  <span class="a">+</span> app_migrations         = <span class="a">"200+"</span></span>
+<span class="ln">  <span class="a">+</span> firewall_rules_moved   = <span class="a">"100+"</span> <span class="d"># 4 accounts</span></span>
+<span class="ln">  <span class="a">+</span> services_containerized = <span class="a">"50+"</span></span>
+<span class="ln">  <span class="c">~</span> permission_set_ops     = <span class="c">3 -&gt; 1</span></span>
+<span class="ln">  <span class="c">~</span> mttr                   = <span class="c">"-50%"</span></span>
+<span class="ln"> </span>
+<span class="ln"><span class="b">Plan:</span> <span class="a">4 to add</span>, <span class="c">2 to change</span>, 0 to destroy.</span></pre>
+    </div>
+  </header>
+
+  <div class="metrics" aria-label="Highlights">
+    <div class="metric"><b>99.999%</b><span>uptime on ML inference APIs at Trellix</span></div>
+    <div class="metric"><b>10M+</b><span>daily inference requests served</span></div>
+    <div class="metric"><b>200+</b><span>application migrations supported</span></div>
+    <div class="metric"><b>50%</b><span>faster MTTR across 5 Kafka/ES clusters</span></div>
+  </div>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="sec-head">
+      <p class="label">Experience</p>
+      <h2 id="exp-h">Where I've worked</h2>
+    </div>
+    <div class="log">
+      <article class="job">
+        <div class="when"><span class="now">May 2024 – Present</span><span>Remote</span></div>
+        <div>
+          <h3>Evolv Consulting</h3>
+          <p class="title">Consultant, Senior Cloud Platform / Infrastructure Engineer</p>
+          <p class="ctx">Client: a fintech platform delivering banking, lending and investing services.</p>
+          <ul>
+            <li>Designed an AWS Identity Center permission-set module that folds 3 separate Terraform operations into one atomic unit, cutting configuration complexity 67% and eliminating drift across 2 AWS organizations.</li>
+            <li>Built AWS Network Firewall from scratch, with Lambda + EventBridge automation for custom-port FQDN rules, then migrated 100+ legacy appliance rules across 4 accounts using STRICT_ORDER stateful evaluation.</li>
+            <li>Led cross-account IAM design between EKS workloads and AWS services, generating GitLab repos, IAM policies and Terraform with Python and Jinja to support 200+ application migrations.</li>
+            <li>Restored connectivity for 50+ applications after migration with VPC peering and PrivateLink delivered through GitLab CI, holding 99.99% platform availability.</li>
+            <li>Removed GitHub API rate-limit failures from CI with caching and fallbacks, and paid down 2.5 years of tooling debt (tflint v0.23 → v0.45).</li>
+          </ul>
+          <div class="tags"><span class="tag">Terraform</span><span class="tag">AWS IAM Identity Center</span><span class="tag">Network Firewall</span><span class="tag">EKS</span><span class="tag">GitLab CI</span><span class="tag">Python</span></div>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when"><span>Nov 2022 – Apr 2025</span><span>Remote</span></div>
+        <div>
+          <h3>Trellix (FireEye &amp; McAfee)</h3>
+          <p class="title">Senior Software Engineer, DevOps / SRE</p>
+          <p class="ctx">Cybersecurity company formed from the merger of FireEye and McAfee Enterprise.</p>
+          <ul>
+            <li>Built and ran FastAPI microservices serving ML models to the data science team: 10M+ inference requests a day at 99.999% uptime.</li>
+            <li>Automated observability and remediation for 5 multi-region Kafka and Elasticsearch clusters on EKS with Prometheus and Grafana, cutting MTTR 50%.</li>
+            <li>Containerized and migrated 50+ legacy Node.js services into secure, cloud-native environments.</li>
+          </ul>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Kafka</span><span class="tag">Elasticsearch</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">EKS</span></div>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when"><span>Jun 2021 – Nov 2022</span><span>Philadelphia, PA</span></div>
+        <div>
+          <h3>Slalom</h3>
+          <p class="title">Consultant, Cloud Infrastructure Engineer</p>
+          <ul>
+            <li>Led a 5-engineer team that built a data pipeline from zero in 4 months on Lambda, S3, Athena and Glue, doubling ingestion and processing throughput.</li>
+            <li>Built Python microservices orchestrated by Step Functions that process 500+ financial documents a day through OCR at 99.99% uptime.</li>
+          </ul>
+          <div class="tags"><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Athena</span><span class="tag">Step Functions</span></div>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when"><span>Oct 2019 – Jun 2021</span><span>Malvern, PA</span></div>
+        <div>
+          <h3>Vanguard</h3>
+          <p class="title">Software Engineer, AI/ML Platforms &amp; Infrastructure</p>
+          <ul>
+            <li>Deployed an AWS Kendra search index with Python IaC (Troposphere), cutting client inquiry resolution time 10%.</li>
+            <li>Built self-service CloudFormation template generation that cut infrastructure development time 20% across 10+ teams.</li>
+            <li>Provisioned infrastructure across 5 AWS environments with security and compliance safeguards built in.</li>
+          </ul>
+          <div class="tags"><span class="tag">CloudFormation</span><span class="tag">Troposphere</span><span class="tag">Kendra</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="proj-h">
+    <div class="sec-head">
+      <p class="label">Projects</p>
+      <h2 id="proj-h">Things I build on my own time</h2>
+    </div>
+    <div class="projects">
+      <article class="proj">
+        <span class="path">JRcodes/systematic-trading-pipeline</span>
+        <h3>Systematic Trading Pipeline</h3>
+        <p>An end-to-end trading pipeline that runs from signal generation through backtesting to live trading.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Backtesting</span></div>
+      </article>
+      <article class="proj">
+        <span class="path">saucey-code/aws-org-management</span>
+        <h3>AWS Org Management</h3>
+        <p>Infrastructure-as-code for managing a multi-account AWS Organization: accounts, guardrails and access.</p>
+        <div class="tags"><span class="tag">AWS Organizations</span><span class="tag">IaC</span></div>
+      </article>
+      <article class="proj">
+        <span class="path">JRcodes/nifty-scripts</span>
+        <h3>Nifty Scripts</h3>
+        <p>A working toolbox of Python automation scripts for everyday cloud and developer chores.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span></div>
+      </article>
+      <article class="proj">
+        <span class="path">JRcodes/SENTIMENT-ANALYSIS-FOR-PITCHORK</span>
+        <h3>Pitchfork Sentiment Analysis</h3>
+        <p>A data science project scoring the sentiment of Pitchfork music reviews.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">NLP</span></div>
+      </article>
+      <article class="proj">
+        <span class="path">JRcodes/COLOR-GAME</span>
+        <h3>Color Game</h3>
+        <p>A browser game: read an RGB value and pick the matching swatch.</p>
+        <div class="tags"><span class="tag">JavaScript</span></div>
+        <a href="https://github.com/JRcodes/COLOR-GAME" target="_blank" rel="noopener">View on GitHub</a>
+      </article>
+      <article class="proj">
+        <span class="path">JRcodes/SCORE-KEEPER</span>
+        <h3>Score Keeper</h3>
+        <p>A small web app for keeping score in head-to-head games.</p>
+        <div class="tags"><span class="tag">JavaScript</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="sec-head">
+      <p class="label">Skills</p>
+      <h2 id="skills-h">Tools I reach for</h2>
+    </div>
+    <div class="skills">
+      <div><h3>Cloud &amp; IaC</h3><ul><li>AWS: EKS, IAM, VPC, PrivateLink</li><li>Lambda, EventBridge, Network Firewall</li><li>Terraform</li><li>CloudFormation · AWS CDK</li></ul></div>
+      <div><h3>Platform</h3><ul><li>Kubernetes</li><li>Docker</li><li>GitLab CI · GitHub Actions</li><li>Internal developer tooling</li></ul></div>
+      <div><h3>Backend &amp; data</h3><ul><li>Python · AsyncIO</li><li>FastAPI · REST APIs</li><li>Kafka · event-driven design</li><li>Glue · Athena · Step Functions</li></ul></div>
+      <div><h3>Reliability</h3><ul><li>Prometheus · Grafana</li><li>Elasticsearch</li><li>Incident response</li><li>IAM governance &amp; network security</li></ul></div>
+    </div>
+  </section>
+
+  <div class="duo">
+    <section aria-labelledby="edu-h">
+      <div class="sec-head">
+        <p class="label">Education</p>
+        <h2 id="edu-h">University of Delaware</h2>
+      </div>
+      <p>Bachelor's degree in Civil Engineering, with Computer Science electives. Newark, DE.</p>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-h">
+      <p class="label">Contact</p>
+      <h2 id="contact-h">Let's talk platform work</h2>
+      <p>I'm interested in senior platform, infrastructure and SRE roles, remote or in Houston. Email is the fastest way to reach me.</p>
+      <div class="email">
+        <code id="email-addr">ny.nappiah@gmail.com</code>
+        <button type="button" id="copy-email">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/ny-nappiah/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/JRcodes" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2026 Nana Y. Nyarko-Appiah · Houston, TX</footer>
+</div>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email-addr').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); }
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email-addr'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected, press Ctrl+C');
+  }
+  try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); } catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
