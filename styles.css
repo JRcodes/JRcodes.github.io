@@ -323,6 +323,36 @@ code {
 .contact-links { display: flex; gap: 24px; font-weight: 600; font-size: 15px; margin-bottom: 26px; }
 .contact-note { color: var(--text-faint); font-size: 14px; font-family: var(--font-mono); }
 
+/* ---------- Writing ---------- */
+.section-sub { color: var(--text-dim); margin: -34px 0 40px; max-width: 640px; }
+.articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 38px; }
+.article-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.article-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+.article-img { display: block; aspect-ratio: 16/9; overflow: hidden; background: #0d1420; }
+.article-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.article-card:hover .article-img img { transform: scale(1.04); }
+.article-img-fallback {
+  background:
+    radial-gradient(ellipse 80% 90% at 20% 10%, rgba(52, 211, 153, 0.22), transparent 60%),
+    radial-gradient(ellipse 70% 80% at 85% 90%, rgba(56, 130, 246, 0.16), transparent 60%),
+    #0d1420;
+}
+.article-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.article-date {
+  font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.article-body h3 { font-size: 1.04rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.42; }
+.article-body h3 a { color: var(--text); }
+.article-body h3 a:hover { color: var(--accent); text-decoration: none; }
+.article-body p { color: var(--text-dim); font-size: 14px; line-height: 1.6; flex: 1; }
+.article-link { font-size: 13.5px; font-weight: 600; }
+.writing-more { text-align: left; }
+
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--border); padding: 28px 0; background: var(--bg); }
 .footer-inner {
@@ -339,6 +369,7 @@ code {
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonial-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .section { padding: 76px 0; }

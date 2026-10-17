@@ -89,4 +89,104 @@
   // ---- Footer year ----
   var year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
+
+  // ---- Medium articles: refresh from RSS (graceful fallback to hardcoded cards) ----
+  (function () {
+    var grid = document.getElementById("articlesGrid");
+    if (!grid || !("fetch" in window)) return;
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 8000);
+    fetch(
+      "https://api.rss2json.com/v1/api.json?rss_url=" +
+        encodeURIComponent("https://medium.com/feed/@nkappiah92"),
+      { signal: controller.signal }
+    )
+      .then(function (res) {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error("bad response");
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data || data.status !== "ok" || !data.items || !data.items.length) return;
+        renderArticles(data.items.slice(0, 3));
+      })
+      .catch(function () {
+        /* keep the hardcoded fallback cards */
+      });
+
+    function renderArticles(items) {
+      grid.innerHTML = "";
+      items.forEach(function (item) {
+        var card = document.createElement("article");
+        card.className = "article-card reveal visible";
+        var thumb =
+          item.thumbnail && item.thumbnail.indexOf("/_/stat") === -1
+            ? item.thumbnail
+            : null;
+        if (thumb) {
+          var a = document.createElement("a");
+          a.className = "article-img";
+          a.href = item.link;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.setAttribute("aria-hidden", "true");
+          a.tabIndex = -1;
+          var img = document.createElement("img");
+          img.src = thumb;
+          img.alt = "";
+          img.loading = "lazy";
+          a.appendChild(img);
+          card.appendChild(a);
+        } else {
+          var ph = document.createElement("div");
+          ph.className = "article-img article-img-fallback";
+          ph.setAttribute("aria-hidden", "true");
+          card.appendChild(ph);
+        }
+        var body = document.createElement("div");
+        body.className = "article-body";
+        var date = document.createElement("span");
+        date.className = "article-date";
+        date.textContent = formatDate(item.pubDate);
+        body.appendChild(date);
+        var h3 = document.createElement("h3");
+        var ta = document.createElement("a");
+        ta.href = item.link;
+        ta.target = "_blank";
+        ta.rel = "noopener";
+        ta.textContent = item.title;
+        h3.appendChild(ta);
+        body.appendChild(h3);
+        var p = document.createElement("p");
+        p.textContent = excerpt(item.description);
+        body.appendChild(p);
+        var more = document.createElement("a");
+        more.className = "article-link";
+        more.href = item.link;
+        more.target = "_blank";
+        more.rel = "noopener";
+        more.textContent = "Read on Medium \u2197";
+        body.appendChild(more);
+        card.appendChild(body);
+        grid.appendChild(card);
+      });
+    }
+
+    function formatDate(s) {
+      var d = new Date(s);
+      if (isNaN(d.getTime())) return "";
+      return d.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+    }
+
+    function excerpt(htmlStr) {
+      var tmp = document.createElement("div");
+      tmp.innerHTML = htmlStr || "";
+      var t = (tmp.textContent || "").replace(/\s+/g, " ").trim();
+      return t.length > 150 ? t.slice(0, 150).trimEnd() + "\u2026" : t;
+    }
+  })();
 })();
