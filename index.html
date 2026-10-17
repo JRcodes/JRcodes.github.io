@@ -281,19 +281,58 @@
           </div>
         </article>
 
-        <article class="project reveal">
-          <div class="project-top">
-            <span class="project-badge project-badge-alt">Hackathon project</span>
-          </div>
-          <h3>AML Detection Engine</h3>
-          <p>
-            Evolv internal hackathon (2025). On a 2–4 person team, I split work between the
-            Snowflake data layer — schema and detection queries — and the Streamlit dashboard.
-          </p>
-          <div class="tag-row">
-            <span class="tag">Snowflake</span><span class="tag">Streamlit</span><span class="tag">SQL</span>
-          </div>
-        </article>
+        <div class="project-grid">
+          <article class="project reveal">
+            <div class="project-top">
+              <span class="project-badge project-badge-alt">Hackathon project</span>
+            </div>
+            <h3>AML Detection Engine</h3>
+            <p>
+              Evolv internal hackathon (2025). On a 2–4 person team, I split work between the
+              Snowflake data layer — schema and detection queries — and the Streamlit dashboard.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Snowflake</span><span class="tag">Streamlit</span><span class="tag">SQL</span>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-top">
+              <span class="project-badge">Open source</span>
+              <div class="project-links">
+                <a href="https://github.com/JRcodes/payments-legacy-demo" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+            <h3>payments-legacy</h3>
+            <p>
+              A self-contained, EC2-based payments system: three FastAPI services (payments API,
+              ledger, fraud-check) on their own hosts, discovered by DNS, deployed by GitHub
+              Actions through S3 and SSM — with fault injection and load generation built in.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Terraform</span>
+              <span class="tag">EC2</span><span class="tag">GitHub Actions</span><span class="tag">DynamoDB</span>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-top">
+              <span class="project-badge">Open source</span>
+              <div class="project-links">
+                <a href="https://github.com/JRcodes/project-omnipresent" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+            <h3>project-omnipresent</h3>
+            <p>
+              A push-based configuration management tool built from scratch in Bash to learn how
+              Ansible works under the hood — agentless, host-node architecture over key-based SSH.
+              A learning experiment, by design.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Bash</span><span class="tag">SSH</span><span class="tag">Docker</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
