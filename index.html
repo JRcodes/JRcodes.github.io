@@ -96,13 +96,13 @@
       <div class="container">
         <div class="metrics-grid">
           <div class="metric reveal"><span class="metric-value">200+</span><span class="metric-label">applications migrated to a new cloud platform</span></div>
-          <div class="metric reveal"><span class="metric-value">50+</span><span class="metric-label">applications' connectivity restored post-migration</span></div>
-          <div class="metric reveal"><span class="metric-value">99.99%</span><span class="metric-label">platform availability on the re-platforming program</span></div>
+          <div class="metric reveal"><span class="metric-value">Restored</span><span class="metric-label">application connectivity post-migration</span></div>
+          <div class="metric reveal"><span class="metric-value">Strong</span><span class="metric-label">platform availability on the re-platforming program</span></div>
           <div class="metric reveal"><span class="metric-value">67%</span><span class="metric-label">reduction in IAM configuration complexity</span></div>
           <div class="metric reveal"><span class="metric-value">10M+</span><span class="metric-label">daily ML inference requests served at Trellix</span></div>
-          <div class="metric reveal"><span class="metric-value">99.999%</span><span class="metric-label">uptime on ML model serving at Trellix</span></div>
-          <div class="metric reveal"><span class="metric-value">50%</span><span class="metric-label">MTTR reduction on Kafka &amp; Elasticsearch at Trellix</span></div>
-          <div class="metric reveal"><span class="metric-value">50%</span><span class="metric-label">less developer time answering on-call questions, via an AI chatbot</span></div>
+          <div class="metric reveal"><span class="metric-value">Reliable</span><span class="metric-label">production ML model serving at Trellix</span></div>
+          <div class="metric reveal"><span class="metric-value">Faster</span><span class="metric-label">incident resolution on Kafka &amp; Elasticsearch at Trellix</span></div>
+          <div class="metric reveal"><span class="metric-value">~Half</span><span class="metric-label">less developer time answering on-call questions, via an AI chatbot</span></div>
         </div>
       </div>
     </section>
@@ -193,9 +193,9 @@
               <ul>
                 <li><strong>Unified AWS Identity Center Permission Set Terraform module:</strong> consolidated 3 separate Terraform operations into 1 atomic unit — a 67% reduction in configuration complexity — eliminating drift risk across 2 AWS organizations. 703 lines of module code plus ~2,500 lines of docs; merged with 5 team approvals after ~4 months of iterative prototyping, including <code>terraform state mv</code> migration of existing resources.</li>
                 <li><strong>Cross-account IAM migration automation (Python + Jinja):</strong> auto-generated GitLab repo directories, IAM policies, and Terraform code; OIDC trust policies let new-platform (EKS) workloads assume legacy roles. Supported migration of 200+ applications, including sensitive financial-services workloads (banking, debit card, risk), using <code>ForAllValues:StringEquals</code> conditions for shared multi-app service roles.</li>
-                <li><strong>Post-migration network connectivity (VPC peering + PrivateLink via Terraform/GitLab CI):</strong> restored connectivity for 50+ applications at 99.99% platform availability — including cross-team VPC peering with the data platform and PrivateLink to a third-party credit API.</li>
+                <li><strong>Post-migration network connectivity (VPC peering + PrivateLink via Terraform/GitLab CI):</strong> restored application connectivity with strong platform availability — including cross-team VPC peering with the data platform and PrivateLink to a third-party credit API.</li>
                 <li><strong>AWS Network Firewall buildout from zero:</strong> stood up a firewall-rules repo end to end (ADR, CI/CD, state, policies). Built a Python Lambda + EventBridge automation that resolves custom-port FQDNs to IPs (AWS Network Firewall only supports FQDN rules on ports 80/443). Migrated 100+ legacy firewall appliance rules across 4 AWS accounts with a default-deny posture for banking environments and STRICT_ORDER stateful evaluation; pruned rules with the Security team.</li>
-                <li><strong>AI-powered Slack chatbot (Lambda + Amazon Lex + LLM via Bedrock/OpenAI):</strong> generative answers with a Slack signature verification layer and sync/async invocation paths. Adopted across the Cloud Infrastructure Platform org (5 teams); cut developer time answering on-call questions by 50%.</li>
+                <li><strong>AI-powered Slack chatbot (Lambda + Amazon Lex + LLM via Bedrock/OpenAI):</strong> generative answers with a Slack signature verification layer and sync/async invocation paths. Adopted across the Cloud Infrastructure Platform org (5 teams); cut developer time answering on-call questions by roughly half.</li>
                 <li>Built a custom MCP server exposing GitLab docs and infra/IaC processes to AI assistants.</li>
                 <li><strong>CI/CD resilience:</strong> caching and fallback strategies eliminated GitHub API rate-limit failures; upgraded tflint v0.23.0 → v0.45.0 (2.5 years of improvements).</li>
                 <li>Supported platform tooling for 5 teams — networking and service discovery (security groups, NLB node ports, connectivity-validation test app) plus CI/CD runner IAM for the artifact repo and runner infrastructure.</li>
@@ -213,8 +213,8 @@
               <h3>Staff Software / DevOps Engineer</h3>
               <p class="job-company">Trellix <span class="job-client">— cybersecurity: threat intelligence and detection</span></p>
               <ul>
-                <li><strong>ML model serving platform (FastAPI + asyncio):</strong> 10M+ daily inference requests at 99.999% uptime for the data science team; async, non-blocking I/O to the model backend.</li>
-                <li><strong>Observability &amp; auto-remediation</strong> for 5 multi-regional Kafka and Elasticsearch clusters on AWS EKS (Prometheus, Grafana, Bash) — cut MTTR by 50%.</li>
+                <li><strong>ML model serving platform (FastAPI + asyncio):</strong> 10M+ daily inference requests with strong production reliability for the data science team; async, non-blocking I/O to the model backend.</li>
+                <li><strong>Observability &amp; auto-remediation</strong> for 5 multi-regional Kafka and Elasticsearch clusters on AWS EKS (Prometheus, Grafana, Bash) — significantly cut MTTR.</li>
                 <li>Designed and implemented a Consul service mesh: service discovery, mTLS, and traffic management across 5 multi-regional EKS clusters.</li>
                 <li>Kafka broker configuration, producers/consumers, with Cassandra as the primary sink.</li>
                 <li>Built an AWS CDK Python library standardizing EC2/Lambda creation, adopted by 2 teams.</li>
@@ -233,7 +233,7 @@
               <h3>Consultant, Cloud Infrastructure Engineer</h3>
               <p class="job-company">Slalom <span class="job-client">— global business and technology consulting firm</span></p>
               <ul>
-                <li><strong>PennyMac (mortgage lending):</strong> Python microservices orchestrated by AWS Step Functions processing 500+ financial documents/day via OCR; S3 ingestion; DynamoDB status tracking with retry/catch for idempotent processing; 99.99% uptime.</li>
+                <li><strong>PennyMac (mortgage lending):</strong> Python microservices orchestrated by AWS Step Functions processing high volumes of financial documents daily via OCR; S3 ingestion; DynamoDB status tracking with retry/catch for idempotent processing; strong production reliability.</li>
                 <li><strong>Brigade Energy:</strong> led a 5-engineer team building a zero-to-cloud data pipeline (Lambda/Python, S3, Athena, Glue) in 4 months — doubling ingestion/processing throughput. Integrated 4–5 external data vendor APIs and complex SQL parsing; managed client and vendor stakeholders. The team's work earned an 8-week engagement extension.</li>
               </ul>
             </div>
@@ -248,9 +248,9 @@
               <h3>Software Engineer, AI/ML Platforms / Infrastructure</h3>
               <p class="job-company">Vanguard <span class="job-client">— investment management</span></p>
               <ul>
-                <li>Built an AWS Kendra search index with Python IaC (Troposphere), integrated with frontend search — reduced client inquiry resolution time 10% while maintaining compliance.</li>
+                <li>Built an AWS Kendra search index with Python IaC (Troposphere), integrated with frontend search — reduced client inquiry resolution time while maintaining compliance.</li>
                 <li>Co-built a real-time SageMaker Inference Pipeline template (multi-container pre/post-processing) as part of a cross-functional team; adopted by 4 teams.</li>
-                <li>Self-service CloudFormation generation — cut infrastructure dev time 20% across 10+ teams.</li>
+                <li>Self-service CloudFormation generation — cut infrastructure dev time across many teams.</li>
                 <li>Provisioned infrastructure across 5 AWS environments with embedded security/compliance safeguards.</li>
               </ul>
             </div>
@@ -302,7 +302,7 @@
             <h3>Multi-Region Kafka &amp; Elasticsearch SRE</h3>
             <p>
               At Trellix: observability and auto-remediation for 5 multi-regional Kafka and
-              Elasticsearch clusters on AWS EKS (Prometheus, Grafana) — cutting MTTR by 50%.
+              Elasticsearch clusters on AWS EKS (Prometheus, Grafana) — significantly cutting MTTR.
               Also designed a Consul service mesh with mTLS and traffic management across
               the clusters.
             </p>
@@ -320,7 +320,7 @@
             <p>
               On the SoFi engagement (via Evolv): an AI-powered Slack chatbot — Lambda +
               Amazon Lex + LLM via Bedrock/OpenAI — adopted across 5 platform teams, cutting
-              developer time answering on-call questions by 50%. Also built a custom MCP
+              developer time answering on-call questions by roughly half. Also built a custom MCP
               server exposing GitLab docs and IaC processes to AI assistants.
             </p>
             <div class="tag-row">
